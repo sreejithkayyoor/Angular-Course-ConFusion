@@ -2,6 +2,7 @@ import { Dish } from './dish';
 
 export const DISHES: Dish[] = [
     {
+        id:'1',
         name: 'Uthappizza',
         image: '/assets/images/uthappizza.png',
         category: 'mains',
@@ -40,9 +41,11 @@ export const DISHES: Dish[] = [
                 author: '25 Cent',
                 date: '2011-12-02T17:57:28.556094Z'
             }
-        ]
+        ],
+        featured: true
     },
     {
+        id:'2',
         name: 'Zucchipakoda',
         image: '/assets/images/zucchipakoda.png',
         category: 'appetizer',
@@ -80,9 +83,11 @@ export const DISHES: Dish[] = [
                 author: '25 Cent',
                 date: '2011-12-02T17:57:28.556094Z'
             }
-        ]
+        ],
+        featured: false
     },
     {
+        id:'3',
         name: 'Vadonut',
         image: '/assets/images/vadonut.png',
         category: 'appetizer',
@@ -120,9 +125,11 @@ export const DISHES: Dish[] = [
                 author: '25 Cent',
                 date: '2011-12-02T17:57:28.556094Z'
             }
-        ]
+        ],
+        featured: false
     },
     {
+        id:'4',
         name: 'ElaiCheese Cake',
         image: '/assets/images/elaicheesecake.png',
         category: 'dessert',
@@ -160,6 +167,7 @@ export const DISHES: Dish[] = [
                 author: '25 Cent',
                 date: '2011-12-02T17:57:28.556094Z'
             }
-        ]
+        ],
+        featured: false
     }
 ];
