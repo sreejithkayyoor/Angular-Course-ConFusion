@@ -35,11 +35,20 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="!waiting&&!errMess">
     <h3>Send us your Feedback</h3>
-    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+    <div *ngIf="feedBackResponse" [@expand]>
+        <h3>Your Submission</h3>
+      <p>First Name: {{feedBackResponse.firstname}}</p>
+      <p>Last Name: {{feedBackResponse.lastname}}</p>
+      <p>Tel. Number: {{feedBackResponse.telnum}}</p>
+      <p>Email: {{feedBackResponse.email}}</p>
+      <p>Contact You ?: {{feedBackResponse.agree}}</p>
+      <p>How?: {{feedBackResponse.contacttype}}</p>
+      <p>Feedback: {{feedBackResponse.message}}</p>
+    </div>
 
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" #fform="ngForm">
+    <form novalidate [formGroup]="feedbackForm" *ngIf="!timeout&&!feedBackResponse" (ngSubmit)="onSubmit()" #fform="ngForm" [@expand]>
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -79,5 +88,12 @@
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+  </div>
+  <div fxFlex *ngIf="waiting&&!errMess">
+    <mat-spinner></mat-spinner><h4>Loding . . . Please Wait</h4>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 </div>

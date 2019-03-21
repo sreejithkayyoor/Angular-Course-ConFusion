@@ -64,9 +64,10 @@ export class DishdetailsComponent implements OnInit {
   ngOnInit() {
     this.dishService.getDishIds()
       .subscribe((dishIds) => this.dishIds = dishIds);
-      this.route.params.pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(+params['id']); }))
-      .subscribe(dish => { this.dish = dish; this.dishCopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown'; },
-        errmess => this.errMess = <any>errmess);            
+      this.route.params
+      .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+      .subscribe(dish => { this.dish = dish; this.dishCopy = dish; this.setPrevNext(dish.id); },
+        errmess => this.errMess = <any>errmess );           
   }
 
   setPrevNext(dishId: String){
@@ -125,7 +126,7 @@ export class DishdetailsComponent implements OnInit {
       .subscribe(dish => {
         this.dish = dish; this.dishCopy = dish;
       },
-      errmess =>{this.dish = null; this.BaseURL.dishCopy = null; this.errMess = <any> errmess;})
+      errmess => {this.errMess = <any>errmess,this.dish = null, this.dishCopy = null});
     this.contactFormDirective.resetForm();
     this.commentForm.setValue({author:null,rating:5,comment:null});
     

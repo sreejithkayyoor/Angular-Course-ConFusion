@@ -36,3 +36,15 @@ export function expand() {
         ])
     ]);
 }
+
+export function response (){
+    return trigger('response', [
+        state('*', style({
+          opacity:1
+        })),
+        state('hide', style({
+          opacity:0
+        })),
+        transition('*=>hide', animate('500ms 5000ms ease-out'))
+      ])
+}

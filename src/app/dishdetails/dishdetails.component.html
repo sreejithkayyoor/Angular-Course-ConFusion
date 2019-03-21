@@ -71,7 +71,7 @@
     </form>
   </div>
 
-  <div fxFlex [hidden]="dish || errMess">
+  <div fxFlex *ngIf="!dish&&!errMess">
     <mat-spinner></mat-spinner><h4>Loding . . . Please Wait</h4>
   </div>
   <div fxFlex *ngIf="errMess">
